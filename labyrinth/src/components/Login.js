@@ -12,7 +12,9 @@ export default function Login() {
 				initialValues={{ username: '', password: '' }}
 				onSubmit={(values) => {
 					axiosWithAuth()
-						.post('https://------', { ...values })
+						.post('https://lambda-mud-test.herokuapp.com/api/login/', {
+							...values,
+						})
 						.then((res) => {
 							localStorage.setItem('token', res.data.token);
 							history.push('/mainpage');

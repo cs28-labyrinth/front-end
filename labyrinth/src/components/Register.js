@@ -25,7 +25,7 @@ export default function Register(props) {
 				validationSchema={RegisterSchema}
 				onSubmit={(values) => {
 					axiosWithAuth()
-						.post('https://-----', {
+						.post('https://lambda-mud-test.herokuapp.com/api/registration/', {
 							...values,
 							id: Date.now,
 						})
