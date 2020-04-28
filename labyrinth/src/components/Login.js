@@ -7,31 +7,29 @@ export default function Login() {
 	let history = useHistory();
 
 	return (
-		<Form>
-			<Formik
-				initialValues={{ username: '', password: '' }}
-				onSubmit={(values) => {
-					axios
-						.post('https://lambda-mud-test.herokuapp.com/api/login/', {
-							...values,
-						})
-						.then((res) => {
-							localStorage.setItem('token', res.data.token);
-							history.push('/mainpage');
-						})
-						.catch((err) => console.log(err));
-				}}
-			>
-				<Form>
-					<span>Username: </span>
-					<Field type="username" name="username"></Field>
+		<Formik
+			initialValues={{ username: '', password: '' }}
+			onSubmit={(values) => {
+				axios
+					.post('https://lambda-mud-test.herokuapp.com/api/login/', {
+						...values,
+					})
+					.then((res) => {
+						localStorage.setItem('token', res.data.token);
+						history.push('/mainpage');
+					})
+					.catch((err) => console.log(err));
+			}}
+		>
+			<Form>
+				<span>Username: </span>
+				<Field type="username" name="username"></Field>
 
-					<span>Password: </span>
-					<Field type="password" name="password"></Field>
+				<span>Password: </span>
+				<Field type="password" name="password"></Field>
 
-					<button type="submit">Log In</button>
-				</Form>
-			</Formik>
-		</Form>
+				<button type="submit">Log In</button>
+			</Form>
+		</Formik>
 	);
 }

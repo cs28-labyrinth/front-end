@@ -23,39 +23,40 @@ export default function Register(props) {
 	let history = useHistory();
 
 	return (
-		<Form>
-			<Formik
-				initialValues={{ username: '', password1: '', password2: '' }}
-				validationSchema={RegisterSchema}
-				onSubmit={(values) => {
-					axios
-						.post('https://lambda-mud-test.herokuapp.com/api/registration/', {
-							...values,
-							id: Date.now,
-						})
-						.then((res) => {
-							console.log(res);
-							history.push('/login');
-						})
-						.catch((err) => console.log(err));
-				}}
-			>
-				{(errors, touched) => (
-					<Form>
-						<span>Username: </span>
-						<Field type="username" name="username"></Field>
+		<Formik
+			initialValues={{ username: '', password1: '', password2: '' }}
+			validationSchema={RegisterSchema}
+			onSubmit={(values) => {
+				axios
+					.post('https://lambda-mud-test.herokuapp.com/api/registration/', {
+						...values,
+						id: Date.now,
+					})
+					.then((res) => {
+						console.log(res);
+						history.push('/login');
+					})
+					.catch((err) => console.log(err));
+			}}
+		>
+			{(errors, touched) => (
+				<Form>
+					<span>Username: </span>
+					<Field type="username" name="username"></Field>
 
-						{errors.username && touched.username ? (
-							<div>{errors.username}</div>
-						) : null}
+					{errors.username && touched.username ? (
+						<div>{errors.username}</div>
+					) : null}
 
-						<span>Password: </span>
-						<Field type="password" name="password"></Field>
+					<span>Password1: </span>
+					<Field type="password" name="password1"></Field>
 
-						<button type="submit">Register</button>
-					</Form>
-				)}
-			</Formik>
-		</Form>
+					<span>Password2: </span>
+					<Field type="password" name="password2"></Field>
+
+					<button type="submit">Register</button>
+				</Form>
+			)}
+		</Formik>
 	);
 }

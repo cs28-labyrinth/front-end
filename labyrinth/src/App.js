@@ -9,12 +9,11 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
 	return (
 		<div className="App">
+			<h1>The Labyrinth</h1>
 			<header className="App-header">
 				<Switch>
-					<Route exact path="/login">
-						<Login />
-					</Route>
-					<Route exact path="/register" component={Register} />
+					<Route exact path="/login" component={Login}></Route>
+					<Route exact path="/register" component={Register}></Route>
 				</Switch>
 			</header>
 		</div>
