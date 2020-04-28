@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './components/Login';
 import Register from './components/Register';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 	return (
@@ -13,7 +14,7 @@ function App() {
 					<Route exact path="/login">
 						<Login />
 					</Route>
-					<Route exact path="/signup" component={Register} />
+					<Route exact path="/register" component={Register} />
 				</Switch>
 			</header>
 		</div>

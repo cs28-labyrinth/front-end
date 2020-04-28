@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -10,7 +10,11 @@ export default function Register(props) {
 			.min(5, 'Must be between 5 and 15 characters.')
 			.max(15, 'Must be between 5 and 15 characters.')
 			.required('Required Field'),
-		password: Yup.string()
+		password1: Yup.string()
+			.min(5, 'Must be between 5 and 15 characters.')
+			.max(15, 'Must be between 5 and 15 characters.')
+			.required('Required Field'),
+		password2: Yup.string()
 			.min(5, 'Must be between 5 and 15 characters.')
 			.max(15, 'Must be between 5 and 15 characters.')
 			.required('Required Field'),
@@ -21,10 +25,10 @@ export default function Register(props) {
 	return (
 		<Form>
 			<Formik
-				initialValues={{ username: '', password: '' }}
+				initialValues={{ username: '', password1: '', password2: '' }}
 				validationSchema={RegisterSchema}
 				onSubmit={(values) => {
-					axiosWithAuth()
+					axios
 						.post('https://lambda-mud-test.herokuapp.com/api/registration/', {
 							...values,
 							id: Date.now,

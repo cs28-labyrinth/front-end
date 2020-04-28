@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
@@ -11,7 +11,7 @@ export default function Login() {
 			<Formik
 				initialValues={{ username: '', password: '' }}
 				onSubmit={(values) => {
-					axiosWithAuth()
+					axios
 						.post('https://lambda-mud-test.herokuapp.com/api/login/', {
 							...values,
 						})
