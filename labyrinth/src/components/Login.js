@@ -11,7 +11,7 @@ export default function Login() {
 			initialValues={{ username: '', password: '' }}
 			onSubmit={(values) => {
 				axios
-					.post('https://lambda-mud-test.herokuapp.com/api/login/', {
+					.post('https://cs28labyrinth.herokuapp.com/api/login/', {
 						...values,
 					})
 					.then((res) => {

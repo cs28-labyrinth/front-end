@@ -28,7 +28,7 @@ export default function Register(props) {
 			validationSchema={RegisterSchema}
 			onSubmit={(values) => {
 				axios
-					.post('https://lambda-mud-test.herokuapp.com/api/registration/', {
+					.post('https://cs28labyrinth.herokuapp.com/api/registration/', {
 						...values,
 						id: Date.now,
 					})
