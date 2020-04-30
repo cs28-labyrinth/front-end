@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Room from './Room';
+import MovementBar from './MovementBar';
 
 export default function MainPage() {
 	const [room, setRoom] = useState([]);
@@ -10,9 +11,9 @@ export default function MainPage() {
 			.get('https://cs28labyrinth.herokuapp.com/api/adv/rooms/')
 			.then((res) => {
 				console.log(res.data);
-				console.log(res.data.rooms);
-				const newData = res.data.rooms;
-				setRoom(newData);
+				console.log(res.data.rooms[0].fields);
+				const roomData = res.data.rooms;
+				setRoom(roomData);
 			})
 			.catch((err) => console.log(err));
 	}, []);
@@ -21,6 +22,7 @@ export default function MainPage() {
 			{room.map((item) => {
 				return <Room getTitle={item.title} getDescription={item.description} />;
 			})}
+			<MovementBar></MovementBar>
 		</div>
 	);
 }
