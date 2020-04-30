@@ -6,11 +6,12 @@ import Login from './components/Login';
 import Register from './components/Register';
 import MainPage from './components/MainPage';
 import PrivateRoute from './components/PrivateRoute';
-
+import Navigation from "./components/Navigation";
 function App() {
 	return (
 		<div className="App">
 			<h1>The Labyrinth</h1>
+			<Navigation></Navigation>
 			<header className="App-header">
 				<Switch>
 					<Route exact path="/login" component={Login} />
