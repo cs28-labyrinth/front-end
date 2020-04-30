@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './components/Login';
 import Register from './components/Register';
+import MainPage from './components/MainPage';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
 				<Switch>
 					<Route exact path="/login" component={Login}></Route>
 					<Route exact path="/register" component={Register}></Route>
+
+					<PrivateRoute exact path="/mainpage" component={MainPage} />
 				</Switch>
 			</header>
 		</div>
