@@ -8,8 +8,8 @@ const Card = styled.div`
 	p {
 		color: black;
 	}
-	width: 300px;
-	height: 150px;
+	width: 400px;
+	height: 250px;
 	border: ridge 5px dodgerblue;
 	display: flex;
 	flex-direction: column;
@@ -21,8 +21,8 @@ const Card = styled.div`
 const Room = (props) => {
 	return (
 		<Card>
-			<h3>Room Title: {props.getTitle}</h3>
-			<div>Room Description: {props.getDescription}</div>
+			<h3>Room: {props.getTitle}</h3>
+			<div>{props.getDescription}</div>
 		</Card>
 	);
 };

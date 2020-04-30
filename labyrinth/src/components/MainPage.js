@@ -20,9 +20,14 @@ export default function MainPage() {
 	return (
 		<div>
 			{room.map((item) => {
-				return <Room getTitle={item.title} getDescription={item.description} />;
+				return (
+					<Room
+						getTitle={item.fields.title}
+						getDescription={item.fields.description}
+					/>
+				);
 			})}
-			<MovementBar></MovementBar>
+			<MovementBar />
 		</div>
 	);
 }

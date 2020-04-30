@@ -13,8 +13,8 @@ function App() {
 			<h1>The Labyrinth</h1>
 			<header className="App-header">
 				<Switch>
-					<Route exact path="/login" component={Login}></Route>
-					<Route exact path="/register" component={Register}></Route>
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/register" component={Register} />
 
 					<PrivateRoute exact path="/mainpage" component={MainPage} />
 				</Switch>
