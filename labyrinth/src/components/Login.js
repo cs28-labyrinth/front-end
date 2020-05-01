@@ -11,11 +11,14 @@ export default function Login() {
 			initialValues={{ username: '', password: '' }}
 			onSubmit={(values) => {
 				axios
-					.post('https://cs28labyrinth.herokuapp.com/api/login/', {
+					// .post('https://cs28labyrinth.herokuapp.com/api/login/', {
+					// 	...values,
+					// })
+					.post('http://localhost:8000/api/login/', {
 						...values,
 					})
 					.then((res) => {
-						localStorage.setItem('token', res.data.token);
+						localStorage.setItem('token', `Token ${res.data.key}`);
 						history.push('/mainpage');
 					})
 					.catch((err) => console.log(err));
