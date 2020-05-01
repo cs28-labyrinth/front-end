@@ -15,7 +15,7 @@ export default function Login() {
 						...values,
 					})
 					.then((res) => {
-						localStorage.setItem('token', res.data.token);
+						localStorage.setItem('token', `Token ${res.data.key}`);
 						history.push('/mainpage');
 					})
 					.catch((err) => console.log(err));
