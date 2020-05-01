@@ -16,8 +16,8 @@ export default function MapPage() {
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(
-        // "https://cs28labyrinth.herokuapp.com/api/adv/rooms/"
-        "http://localhost:8000/api/adv/rooms/"
+        "https://cs28labyrinth.herokuapp.com/api/adv/rooms/"
+        // "http://localhost:8000/api/adv/rooms/"
       );
       const len = Math.sqrt(res.data.rooms.length);
       setLen(len);
@@ -27,8 +27,8 @@ export default function MapPage() {
 
     async function fetchData2() {
       const res = await axiosWithAuth().get(
-        // "https://cs28labyrinth.herokuapp.com/api/adv/init/"
-        "http://localhost:8000/api/adv/init/"
+        "https://cs28labyrinth.herokuapp.com/api/adv/init/"
+        // "http://localhost:8000/api/adv/init/"
       );
       setUser(res.data);
       // window.Pusher.logToConsole = true;
@@ -64,8 +64,8 @@ export default function MapPage() {
       });
 
       await axiosWithAuth().get(
-        // "https://cs28labyrinth.herokuapp.com/api/adv/enter/"
-        "http://localhost:8000/api/adv/enter/"
+        "https://cs28labyrinth.herokuapp.com/api/adv/enter/"
+        // "http://localhost:8000/api/adv/enter/"
       );
     }
     fetchData();
@@ -74,8 +74,8 @@ export default function MapPage() {
     function userLeft(ev) {
       axiosWithAuth()
         .get(
-          // "https://cs28labyrinth.herokuapp.com/api/adv/exit/"
-          "http://localhost:8000/api/adv/exit/"
+          "https://cs28labyrinth.herokuapp.com/api/adv/exit/"
+          // "http://localhost:8000/api/adv/exit/"
         )
         .then((res) => res);
     }

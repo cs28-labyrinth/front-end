@@ -28,14 +28,14 @@ export default function Register(props) {
 			validationSchema={RegisterSchema}
 			onSubmit={(values) => {
 				axios
-					// .post('https://cs28labyrinth.herokuapp.com/api/registration/', {
-					// 	...values,
-					// 	id: Date.now,
-					// })
-					.post('http://localhost:8000/api/registration/', {
+					.post('https://cs28labyrinth.herokuapp.com/api/registration/', {
 						...values,
 						id: Date.now,
 					})
+					// .post('http://localhost:8000/api/registration/', {
+					// 	...values,
+					// 	id: Date.now,
+					// })
 					.then((res) => {
 						console.log(res);
 						history.push('/login');
