@@ -8,11 +8,10 @@ import Room from "./Room";
 
 export default function MapPage() {
   const [len, setLen] = useState();
-  const [rooms, setRooms] = useState();
+  const [rooms, setRooms] = useState([]);
   const [messages, setMessages] = useState([]);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [players, setPlayers] = useState({});
-
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(
@@ -53,6 +52,12 @@ export default function MapPage() {
       let channel3 = pusher.subscribe(`p-channel-${res.data.uuid}`);
       channel3.bind("move", function (data) {
         setPlayers((prev) => ({ ...prev, [data.uuid]: data.current_room }));
+        axiosWithAuth()
+          .get(
+            "https://cs28labyrinth.herokuapp.com/api/adv/init/"
+            // "http://localhost:8000/api/adv/init/"
+          )
+          .then((res) => setUser(res.data));
       });
 
       let channel4 = pusher.subscribe(`p-channel-${res.data.uuid}`);
@@ -79,11 +84,11 @@ export default function MapPage() {
         )
         .then((res) => res);
     }
-    window.addEventListener("beforeunload", userLeft);
+    window.addEventListener("unload", userLeft);
 
-    return window.removeEventListener("beforeunload", userLeft);
+    return window.removeEventListener("unload", userLeft);
   }, []);
-  console.log(user);
+
   return (
     <div className="outer">
       <div className="labyrinth">
@@ -104,10 +109,17 @@ export default function MapPage() {
               if (!fields.s_to) {
                 borders = borders.concat(" ", "border-bottom");
               }
+
               for (const p in players) {
                 if (players[p] === v.pk) {
                   borders = borders.concat(" ", "player");
-                  break;
+                  if (p === user.uuid) {
+                    // setUser((prev) => ({
+                    //   ...prev,
+                    //   title: fields.title,
+                    //   description: fields.description
+                    // }));
+                  }
                 }
               }
               return <div className={borders} key={v.pk}></div>;
