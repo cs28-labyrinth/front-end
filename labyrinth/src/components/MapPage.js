@@ -57,7 +57,7 @@ export default function MapPage() {
             "https://cs28labyrinth.herokuapp.com/api/adv/init/"
             // "http://localhost:8000/api/adv/init/"
           )
-          .then((res) => setUser(res.data));
+          .then((res) => setUser([...res.data]));
       });
 
       let channel4 = pusher.subscribe(`p-channel-${res.data.uuid}`);
